@@ -1,7 +1,7 @@
 #! /bin/sh
 
 #    4kForge make script: Compiles and shrinks a single Java class.
-#    Copyright (C) 2011  David Stark
+#    Copyright (C) 2014  David Stark
 
 # Go into our own dir.
 cd "`dirname "$0"`"
@@ -13,13 +13,13 @@ cd tmp
 cp ../../src/a.java .
 
 # Compile source.
-javac -target 1.5 a.java
+javac -source 1.5 -target 1.5 a.java
 
 # Put source into a jar file.
 jar cvfM a.normal.jar a.class
 
 # Run proguard.
-java -jar ../../bin/proguard/proguard4.10/lib/proguard.jar -injars a.normal.jar -outjars a.proguard.jar -libraryjars /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar -keep public class a -optimizationpasses 9 -overloadaggressively
+java -jar ../../bin/proguard/proguard4.11/lib/proguard.jar -injars a.normal.jar -outjars a.proguard.jar -libraryjars /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar -keep public class a -optimizationpasses 9 -overloadaggressively
 
 # Run pack200.
 pack200 --effort=9 --strip-debug --no-keep-file-order -O --no-gzip a.pack a.proguard.jar
