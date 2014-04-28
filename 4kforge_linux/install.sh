@@ -19,7 +19,9 @@ if [ $IN != "y" ]; then
   exit
 fi
 echo "Licence accepted. Downloading."
-cd bin/proguard/
+cd bin
+mkdir proguard
+cd proguard
 wget -O pg.zip http://sourceforge.net/projects/proguard/files/latest/download?source=files
 gunzip pg.tar.gz
 tar xvf pg.tar
@@ -39,7 +41,9 @@ if [ $IN != "y" ]; then
   exit
 fi
 echo "Licence accepted. Downloading."
-cd bin/kzipmix
+cd bin
+mkdir kzipmix
+cd kzipmix
 wget -O kzip.tar.gz http://static.jonof.id.au/dl/kenutils/kzipmix-20091108-linux.tar.gz
 echo "Installing."
 gunzip kzip.tar.gz
