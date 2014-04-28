@@ -7,6 +7,7 @@
 cd "`dirname "$0"`"
 
 # Go into temp dir.
+mkdir tmp
 cd tmp
 
 # Copy over the current source.
